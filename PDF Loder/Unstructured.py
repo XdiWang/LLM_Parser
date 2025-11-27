@@ -1,53 +1,56 @@
 from langchain_unstructured import UnstructuredLoader
 import os
-import sys
+import argparse
 
 
-def load_pdf_local():
-    # 1. 获取用户输入路径
-    raw_path = input("请输入PDF文件的完整路径 (例如 ./data/paper.pdf): ").strip().strip('"').strip("'")
-    pdf_file_path = os.path.abspath(raw_path)
+def load_pdf_local(input_path, output_path):
+    # 处理路径（转换为绝对路径）
+    pdf_file_path = os.path.abspath(input_path)
+    final_output_path = os.path.abspath(output_path)
 
+    print(f"输入文件: {pdf_file_path}")
+    print(f"输出文件: {final_output_path}")
+
+    # 自动创建输出目录
+    output_dir = os.path.dirname(final_output_path)
+    if output_dir and not os.path.exists(output_dir):
+        try:
+            os.makedirs(output_dir)
+            print(f"【提示】检测到输出目录不存在，已自动创建: {output_dir}")
+        except OSError as e:
+            print(f"【错误】无法创建目录: {e}")
+            return
+
+    # 检查输入文件是否存在
     if not os.path.exists(pdf_file_path):
-        print("错误：找不到该文件，请检查路径是否正确。")
+        print(f"错误：找不到文件 '{pdf_file_path}'")
         return
 
     try:
         print("正在进行本地解析 (Local Parsing)...")
         print("提示: 本地解析依赖 Poppler 和 Tesseract，如果没有安装这些系统工具将会报错。")
 
-        # 2. 初始化 Loader
-        # 不传递 api_key 或 partition_via_api=True 即为本地模式
-        # mode="elements" 是默认行为，将文档拆分为语义单元
-        # strategy="hi_res" (高精度, 慢) 或 "fast" (快, 无OCR)
+        # 初始化 Loader
         loader = UnstructuredLoader(
             pdf_file_path,
-            strategy="hi_res",  # 使用 'hi_res' 可以利用 Tesseract 识别图片中的文字，但速度较慢
+            # strategy="hi_res",  # 使用 'hi_res' 可以利用 Tesseract 识别图片中的文字，但速度较慢
+            # strategy="fast",
+            strategy="ocr_only",
         )
 
         # 开始加载 (这一步在本地消耗 CPU/内存)
         docs = loader.load()
 
-        # 3. 确定输出路径 (脚本同级目录)
-        if getattr(sys, 'frozen', False):
-            script_dir = os.path.dirname(sys.executable)
-        elif "__file__" in globals():
-            script_dir = os.path.dirname(os.path.abspath(__file__))
-        else:
-            script_dir = os.getcwd()
-
-        output_file_path = os.path.join(script_dir, "UnstructuredLoader.txt")
-
-        # 4. 输出结果
-        with open(output_file_path, "w", encoding="utf-8") as f:
+        # 输出结果
+        with open(final_output_path, "w", encoding="utf-8") as f:
 
             header = f"本地解析结果 (Unstructured Local): {os.path.basename(pdf_file_path)}\n" \
-                     f"保存位置: {output_file_path}\n" \
+                     f"保存位置: {final_output_path}\n" \
                      f"识别元素数量: {len(docs)}\n" \
-                     f"解析策略: hi_res (高精度)\n" \
+                     f"解析策略: \n" \
                      f"{'=' * 30}\n\n"
 
-            print(header)
+            # print(header)
             f.write(header)
 
             for i, doc in enumerate(docs):
@@ -66,18 +69,17 @@ def load_pdf_local():
 
                 # 构造输出
                 element_info = f"--- Element {i + 1} [页码: {page_num} | 类型: {category}] ---\n"
-                full_text = f"{element_info}{metadata_str}【内容】:\n{content}\n\n"
+                # full_text = f"{element_info}{metadata_str}【内容】:\n{content}\n\n"
+                full_text = f"【正文内容】:\n{content}\n\n"
 
                 # 控制台只打印部分，文件写入全部
-                if i < 3 or i > len(docs) - 3:
-                    print(full_text)
-                elif i == 3:
-                    print("\n... (正在写入剩余内容到文件) ...\n")
+                # if i == 0:
+                #     print(f"--- 预览第一个元素 ---\n{content[:200]}...\n")
 
                 f.write(full_text)
 
-        print(f"{'=' * 30}")
-        print(f"本地解析完成！文件已保存: {output_file_path}")
+        # print(f"{'=' * 30}")
+        print(f"本地解析完成！文件已保存: {final_output_path}")
 
     except ImportError:
         print("错误: 缺少必要的 Python 库。请运行: pip install 'LangChain-unstructured[local]'")
@@ -86,7 +88,31 @@ def load_pdf_local():
         if "poppler" in str(e).lower() or "tesseract" in str(e).lower():
             print("\n【关键提示】: 看起来你缺少系统级依赖。")
             print("请确保已安装 Poppler 和 Tesseract (不仅仅是 pip 包，而是操作系统软件)。")
+        import traceback
+        traceback.print_exc()
 
 
 if __name__ == "__main__":
-    load_pdf_local()
+    # 初始化参数解析器
+    parser = argparse.ArgumentParser(description="Unstructured 解析工具")
+
+    # -i 参数: 输入文件路径，默认 ../text_version.pdf
+    parser.add_argument(
+        "-i", "--input",
+        type=str,
+        default="../text_version.pdf",
+        help="输入 PDF 文件的路径 (默认: ../text_version.pdf)"
+    )
+
+    # -o 参数: 输出文件路径，默认 Output/UnstructuredLoader_hi_res.txt
+    parser.add_argument(
+        "-o", "--output",
+        type=str,
+        default="Output/UnstructuredLoader_hi_res.txt",
+        help="输出 txt 文件的路径 (默认: Output/UnstructuredLoader_hi_res.txt)"
+    )
+
+    args = parser.parse_args()
+
+    # 运行主逻辑
+    load_pdf_local(args.input, args.output)
