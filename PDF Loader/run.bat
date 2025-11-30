@@ -7,13 +7,13 @@ setlocal
 set PYTHON_EXE=python
 
 :: 设置输入文件路径 (支持相对路径，这里假设 doc.pdf 在上一级目录)
-set "INPUT_FILE=../PDF/Transparent_Injection/injected_document_Trans.pdf"
+set "INPUT_FILE=../PDF/Out_of_Box/oob_poc_cropped.pdf"
 
 :: 设置输入目录 (供 PyPDFDirectory 使用，这里设为上一级目录)
-set "INPUT_DIR=../PDF/Transparent_Injection"
+set "INPUT_DIR=../PDF/Out_of_Box"
 
 :: 设置输出文件夹名称
-set "OUTPUT_DIR=Output/transparent_injection"
+set "OUTPUT_DIR=Output/out_of_box/attacked"
 :: ===========================================
 
 echo [INFO] 开始自动化测试...

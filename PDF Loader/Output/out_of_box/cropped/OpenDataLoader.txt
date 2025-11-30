@@ -1,15 +1,13 @@
-文件解析结果 (OpenDataLoader): text_version.pdf
-保存位置: D:\PycharmProject\LangChainProject\PDF Loader\Output\content_masking\OpenDataLoader_all.txt
+文件解析结果 (OpenDataLoader): oob_poc_cropped.pdf
+保存位置: D:\PycharmProject\LangChainProject\PDF Loader\Output\out_of_box\attacked\OpenDataLoader.txt
 文档片段数: 1
 特点: 本地 Java 引擎，重构文档布局(Markdown)，内置 AI 安全过滤。
 ==============================
 
 【元数据 (Metadata)】:
-  - source: text_version.pdf
+  - source: oob_poc_cropped.pdf
   - format: markdown
 
 【Markdown 内容】:
-# 1
-
 
 
