@@ -7,13 +7,13 @@ setlocal
 set PYTHON_EXE=python
 
 :: 设置输入文件路径 (支持相对路径，这里假设 doc.pdf 在上一级目录)
-set "INPUT_FILE=../PDF/Zero_Width/zero_width.pdf"
+set "INPUT_FILE=../PDF/Transparent_Injection/injected_document_Trans.pdf"
 
 :: 设置输入目录 (供 PyPDFDirectory 使用，这里设为上一级目录)
-set "INPUT_DIR=../PDF/Zero_Width"
+set "INPUT_DIR=../PDF/Transparent_Injection"
 
 :: 设置输出文件夹名称
-set "OUTPUT_DIR=Output/zero_width/zero_width"
+set "OUTPUT_DIR=Output/transparent_injection"
 :: ===========================================
 
 echo [INFO] 开始自动化测试...

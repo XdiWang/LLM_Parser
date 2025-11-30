@@ -47,7 +47,7 @@ def load_pdf_with_opendataloader(input_path, output_path):
             # content_safety_off = ["hidden-text"]
             # content_safety_off = ["off-page"]
             # content_safety_off = ["tiny"]
-            # content_safety_off = ["hidden-ocg"]
+            content_safety_off = ["hidden-ocg"]
         )
 
         # 加载文档
@@ -102,7 +102,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "-i", "--input",
         type=str,
-        default="../PDF/text_version.pdf",
+        default="../PDF/Transparent_Injection/injected_document_Trans.pdf",
         help="输入 PDF 文件的路径 (默认: ../PDF/text_version.pdf)"
     )
 

@@ -108,7 +108,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "-i", "--input",
         type=str,
-        default="..\doc.pdf",
+        default="../PDF/Transparent_Injection/injected_document_Trans.pdf",
         help="输入 PDF 文件的路径 (默认: ..\doc.pdf)"
     )
 
@@ -116,7 +116,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "-o", "--output",
         type=str,
-        default="Output\DoclingLoader.txt",
+        default="Output/transparent_injection/DoclingLoader_force_ocr.txt",
         help="输出 txt 文件的路径 (默认: DoclingLoader.txt)"
     )
 

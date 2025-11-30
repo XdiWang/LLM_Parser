@@ -96,7 +96,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "-i", "--input",
         type=str,
-        default="../text_version.pdf",
+        default="../PDF/Transparent_Injection/injected_document_Trans.pdf",
         help="输入 PDF 文件的路径 (默认: ../text_version.pdf)"
     )
 
@@ -104,7 +104,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "-o", "--output",
         type=str,
-        default="Output/UnstructuredLoader_hi_res.txt",
+        default="Output/transparent_injection/UnstructuredLoader_ocr_only.txt",
         help="输出 txt 文件的路径 (默认: Output/UnstructuredLoader_hi_res.txt)"
     )
 
