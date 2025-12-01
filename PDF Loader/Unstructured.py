@@ -33,8 +33,8 @@ def load_pdf_local(input_path, output_path):
         # 初始化 Loader
         loader = UnstructuredLoader(
             pdf_file_path,
-            # strategy="hi_res",  # 使用 'hi_res' 可以利用 Tesseract 识别图片中的文字，但速度较慢
-            strategy="fast",
+            strategy="hi_res",  # 使用 'hi_res' 可以利用 Tesseract 识别图片中的文字，但速度较慢
+            # strategy="fast",
             # strategy="ocr_only",
         )
 
@@ -96,7 +96,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "-i", "--input",
         type=str,
-        default="../PDF/Out_of_Box/oob_poc_cropped.pdf",
+        default="../PDF/Hidden_OCG/ocg_poc.pdf",
         help="输入 PDF 文件的路径 (默认: ../text_version.pdf)"
     )
 
@@ -104,7 +104,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "-o", "--output",
         type=str,
-        default="Output/out_of_box/cropped/UnstructuredLoader_fast.txt",
+        default="Output/Hidden_OCG/UnstructuredLoader_ocr_only.txt",
         help="输出 txt 文件的路径 (默认: Output/UnstructuredLoader_hi_res.txt)"
     )
 

@@ -44,11 +44,11 @@ def load_pdf_with_opendataloader(input_path, output_path):
         loader = OpenDataLoaderPDFLoader(
             file_path = [pdf_file_path],
             format="markdown",
-            content_safety_off = ["all"]
+            # content_safety_off = ["all"]
             # content_safety_off = ["hidden-text"]
             # content_safety_off = ["off-page"]
             # content_safety_off = ["tiny"]
-            # content_safety_off = ["hidden-ocg"]
+            content_safety_off = ["hidden-ocg"]
         )
 
         # 加载文档
@@ -103,7 +103,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "-i", "--input",
         type=str,
-        default="../PDF/Out_of_Box/oob_poc_cropped.pdf",
+        default="../PDF/Hidden_OCG/ocg_poc.pdf",
         help="输入 PDF 文件的路径 (默认: ../PDF/text_version.pdf)"
     )
 
@@ -111,7 +111,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "-o", "--output",
         type=str,
-        default="Output/out_of_box/cropped/OpenDataLoader_all.txt",
+        default="Output/Hidden_OCG/OpenDataLoader_hidden_ocg.txt",
         help="输出 txt 文件的路径 (默认: Output/OpenDataLoader.txt)"
     )
 

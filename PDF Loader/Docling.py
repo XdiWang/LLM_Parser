@@ -47,7 +47,7 @@ def load_pdf_docling_full_meta(input_path, output_path):
         # pipeline_options.do_table_structure = True
 
         # 强制OCR
-        pipeline_options.ocr_options = RapidOcrOptions(force_full_page_ocr=True)
+        # pipeline_options.ocr_options = RapidOcrOptions(force_full_page_ocr=True)
 
         pipeline_options.accelerator_options = AcceleratorOptions(
             num_threads=8,
@@ -108,7 +108,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "-i", "--input",
         type=str,
-        default="../PDF/Out_of_Box/oob_poc_cropped.pdf",
+        default="../PDF/Hidden_OCG/ocg_poc.pdf",
         help="输入 PDF 文件的路径 (默认: ..\doc.pdf)"
     )
 
@@ -116,7 +116,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "-o", "--output",
         type=str,
-        default="Output/out_of_box/cropped/DoclingLoader_force_ocr.txt",
+        default="Output/Hidden_OCG/DoclingLoader_force_ocr.txt",
         help="输出 txt 文件的路径 (默认: DoclingLoader.txt)"
     )
 
