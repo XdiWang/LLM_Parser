@@ -33,8 +33,8 @@ def load_pdf_local(input_path, output_path):
         # 初始化 Loader
         loader = UnstructuredLoader(
             pdf_file_path,
-            # strategy="hi_res",  # 使用 'hi_res' 可以利用 Tesseract 识别图片中的文字，但速度较慢
-            strategy="fast",
+            strategy="hi_res",  # 使用 'hi_res' 可以利用 Tesseract 识别图片中的文字，但速度较慢
+            # strategy="fast",
             # strategy="ocr_only",
         )
 
