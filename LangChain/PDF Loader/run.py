@@ -8,7 +8,7 @@ from pathlib import Path
 PYTHON_EXE = sys.executable
 
 # 设置输入文件路径 (只需要修改这一个路径即可)
-INPUT_FILE = Path("../PDF/Zero_Width/zero_width.pdf")
+INPUT_FILE = Path("../../PDF/Zero_Width/zero_width.pdf")
 
 # 【自动获取】输入目录直接设为输入文件所在的文件夹
 INPUT_DIR = INPUT_FILE.parent
