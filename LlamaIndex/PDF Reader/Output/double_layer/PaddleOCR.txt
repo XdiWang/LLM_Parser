@@ -1,5 +1,5 @@
 文件解析结果 (PaddleOCR): double_layer.pdf
-保存位置: D:\PycharmProject\LLM_Parser\LlamaIndex\PDF Reader\Output\PaddleOCR.txt
+保存位置: D:\PycharmProject\LLM_Parser\LlamaIndex\PDF Reader\Output\double_layer\PaddleOCR.txt
 解析出的文档片段数量: 1
 ==============================
 

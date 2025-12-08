@@ -1,5 +1,5 @@
 文件解析结果 (SmartPDFLoader): double_layer.pdf
-保存位置: D:\PycharmProject\LLM_Parser\LlamaIndex\PDF Reader\Output\SmartPDFLoader.txt
+保存位置: D:\PycharmProject\LLM_Parser\LlamaIndex\PDF Reader\Output\double_layer\SmartPDFLoader.txt
 解析出的块(Chunks)数量: 1
 ==============================
 
