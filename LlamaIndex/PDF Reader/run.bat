@@ -4,10 +4,10 @@ setlocal enabledelayedexpansion
 
 :: ================= 配置区域 =================
 :: 设置输入 PDF 文件的路径 (建议使用绝对路径，或者相对于脚本的路径)
-set "INPUT_FILE=../../PDF/Zero_Size/font_1.pdf"
+set "INPUT_FILE=../../PDF/Word_Shift/pdf_poc.pdf"
 
 :: 设置输出结果的文件夹
-set "OUTPUT_DIR=Output/zero_size/font_1"
+set "OUTPUT_DIR=Output/word_shift"
 
 :: 设置 API 地址 (仅 SmartPDFLoader 需要)
 set "SMART_API=http://localhost:5001/api/parseDocument?renderFormat=all"

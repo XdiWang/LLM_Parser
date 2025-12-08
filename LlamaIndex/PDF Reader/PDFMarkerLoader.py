@@ -94,9 +94,9 @@ if __name__ == "__main__":
     # 初始化参数解析器
     parser = argparse.ArgumentParser(description="PDFMarkerReader 解析工具 (高质量 Markdown 转换)")
 
-    parser.add_argument("-i", "--input", type=str, default="../../PDF/Zero_Size/font_1.pdf",
+    parser.add_argument("-i", "--input", type=str, default="../../PDF/Word_Shift/pdf_poc.pdf",
                         help="输入 PDF 路径")
-    parser.add_argument("-o", "--output", type=str, default="Output/PDFMarkerLoader.txt", help="输出 txt 路径")
+    parser.add_argument("-o", "--output", type=str, default="Output/word_shift/PDFMarkerLoader.txt", help="输出 txt 路径")
 
     args = parser.parse_args()
 
