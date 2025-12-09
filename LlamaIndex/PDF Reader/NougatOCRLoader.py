@@ -116,9 +116,9 @@ def load_pdf_nougat(input_path, output_path):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Nougat OCR PDF 解析工具")
-    parser.add_argument("-i", "--input", type=str, default="../../PDF/Double_Layer/double_layer.pdf",
+    parser.add_argument("-i", "--input", type=str, default="../../PDF/Out_of_Box/oob_poc_cropped.pdf",
                         help="输入 PDF 路径")
-    parser.add_argument("-o", "--output", type=str, default="Output/NougatOCR.txt", help="输出 txt 路径")
+    parser.add_argument("-o", "--output", type=str, default="Output/out_of_box/cropped/NougatOCR.txt", help="输出 txt 路径")
 
     args = parser.parse_args()
 

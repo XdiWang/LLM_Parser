@@ -1,11 +1,11 @@
 import os
 import argparse
 from pathlib import Path
-from llama_index.readers.pdf_marker import PDFMarkerReader
+# 引入 DoclingReader
+from llama_index.readers.docling import DoclingReader
 
-
-def load_pdf_marker(input_path, output_path):
-    # --- 1. 路径处理 ---
+def load_pdf_docling(input_path, output_path):
+    # --- 1. 路径处理 (保持逻辑一致) ---
     pdf_file_path = os.path.abspath(input_path)
     final_output_path = os.path.abspath(output_path)
 
@@ -28,37 +28,36 @@ def load_pdf_marker(input_path, output_path):
         return
 
     try:
-        print(f"正在初始化 PDFMarkerReader...")
-        print(f"注意: 首次运行可能会自动下载模型权重，请保持网络通畅。")
+        print(f"正在初始化 DoclingReader...")
 
-        # 2. 初始化 PDFMarkerReader
-        # 这里不需要太多参数，底层 marker 会自动处理布局分析
-        loader = PDFMarkerReader()
+        # 2. 初始化 DoclingReader
+        # 默认 export_type 为 Markdown，这能更好地保留文档结构（标题、表格等）
+        loader = DoclingReader()
 
-        print(f"正在解析 PDF (Marker 引擎 - 正在生成 Markdown)...")
+        print(f"正在使用 Docling 解析 PDF (可能比标准解析器稍慢，但在处理布局时更精确)...")
 
         # 3. 调用 load_data 解析
-        # PDFMarkerReader 接收 Path 对象
-        docs = loader.load_data(file=Path(pdf_file_path))
+        # DoclingReader.load_data 接收 file_path 参数
+        docs = loader.load_data(file_path=pdf_file_path)
 
         # --- 输出内容到文件 ---
         with open(final_output_path, "w", encoding="utf-8") as f:
 
-            header = f"文件解析结果 (PDFMarkerReader): {os.path.basename(pdf_file_path)}\n" \
+            header = f"文件解析结果 (DoclingReader): {os.path.basename(pdf_file_path)}\n" \
                      f"保存位置: {final_output_path}\n" \
                      f"解析出的文档块数量: {len(docs)}\n" \
-                     f"说明: Marker 会自动去除页眉页脚，并将公式转换为 LaTeX，输出标准 Markdown\n" \
+                     f"说明: Docling 默认输出 Markdown 格式，能保留表格和标题层级\n" \
                      f"{'=' * 30}\n\n"
 
             print(header)
             f.write(header)
 
-
             for i, doc in enumerate(docs):
-                # 提取内容
+                # 提取内容 (Docling 输出的是 Markdown 文本)
                 content = doc.text
 
                 # 提取元数据
+                # Docling 可能会包含 'dl_doc_hash' 等特有元数据
                 metadata_dict = doc.metadata
                 metadata_str = f"【文档块 (Block {i}) 元数据】:\n"
 
@@ -69,7 +68,7 @@ def load_pdf_marker(input_path, output_path):
                     metadata_str += "  - (无元数据)\n"
 
                 # 构造输出格式
-                full_page_output = f"{metadata_str}\n【Markdown 内容】:\n{content}\n\n{'-' * 20}\n\n"
+                full_page_output = f"{metadata_str}\n【正文内容 (Markdown)】:\n{content}\n\n{'-' * 20}\n\n"
                 f.write(full_page_output)
 
         print(f"解析完成！")
@@ -77,19 +76,18 @@ def load_pdf_marker(input_path, output_path):
 
     except Exception as e:
         print(f"发生错误: {e}")
-        print("提示: 请确保已安装 'marker-pdf' 及其依赖 (PyTorch)。")
         import traceback
         traceback.print_exc()
 
 
 if __name__ == "__main__":
     # 初始化参数解析器
-    parser = argparse.ArgumentParser(description="PDFMarkerReader 解析工具 (高质量 Markdown 转换)")
+    parser = argparse.ArgumentParser(description="DoclingReader 解析工具 (Markdown/布局提取)")
 
-    parser.add_argument("-i", "--input", type=str, default="../../PDF/Word_Shift/pdf_poc.pdf",
+    parser.add_argument("-i", "--input", type=str, default="../../PDF/Double_Layer/double_layer.pdf",
                         help="输入 PDF 路径")
-    parser.add_argument("-o", "--output", type=str, default="Output/word_shift/PDFMarkerLoader.txt", help="输出 txt 路径")
+    parser.add_argument("-o", "--output", type=str, default="Output/DoclingLoader.txt", help="输出 txt 路径")
 
     args = parser.parse_args()
 
-    load_pdf_marker(args.input, args.output)
+    load_pdf_docling(args.input, args.output)
