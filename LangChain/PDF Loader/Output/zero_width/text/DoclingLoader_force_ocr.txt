@@ -3,7 +3,7 @@
 ==============================
 
 【Metadata】:
-  - source: D:\PycharmProject\LangChainProject\PDF\Zero_Width\zero_width.pdf
+  - source: D:\PycharmProject\LLM_Parser\PDF\Zero_Width\text\zero_width.pdf
   - dl_meta:
 {
   "schema_name": "docling_core.transforms.chunker.DocMeta",
@@ -21,10 +21,10 @@
         {
           "page_no": 1,
           "bbox": {
-            "l": 90.024,
-            "t": 767.6540439453125,
-            "r": 181.283,
-            "b": 756.6500439453125,
+            "l": 99.3631591796875,
+            "t": 768.4996795654297,
+            "r": 179.2765096028646,
+            "b": 754.9190368652344,
             "coord_origin": "BOTTOMLEFT"
           },
           "charspan": [
@@ -37,7 +37,7 @@
   ],
   "origin": {
     "mimetype": "application/pdf",
-    "binary_hash": 11419249303279665161,
+    "binary_hash": 11747570634640317467,
     "filename": "zero_width.pdf"
   }
 }

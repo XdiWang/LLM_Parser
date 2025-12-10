@@ -7,13 +7,13 @@ setlocal enabledelayedexpansion
 set PYTHON_EXE=python
 
 :: 设置输入文件路径 (支持相对路径)
-set "INPUT_FILE=../PDF/Zero_Size/font_1.pdf"
+set "INPUT_FILE=../../PDF/Zero_Width/text/zero_width.pdf"
 
 :: 设置输入目录 (供 PyPDFDirectory 使用)
-set "INPUT_DIR=../PDF/Zero_Size"
+set "INPUT_DIR=../../PDF/Zero_Width/text"
 
 :: 设置输出文件夹名称
-set "OUTPUT_DIR=Output/zero_size/font_1"
+set "OUTPUT_DIR=Output/zero_width/text"
 :: ===========================================
 
 echo [INFO] 开始全量自动化测试...
