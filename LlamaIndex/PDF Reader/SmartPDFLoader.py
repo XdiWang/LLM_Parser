@@ -97,6 +97,7 @@ if __name__ == "__main__":
 
     parser.add_argument("-i", "--input", type=str, default="../../PDF/Double_Layer/double_layer.pdf", help="输入 PDF 路径")
     parser.add_argument("-o", "--output", type=str, default="Output/SmartPDFLoader.txt", help="输出 txt 路径")
+    # http://localhost:5001/api/parseDocument?renderFormat=all&applyOcr=yes
     parser.add_argument("--api", type=str, default="http://localhost:5001/api/parseDocument?renderFormat=all",
                         help="API 地址")
 

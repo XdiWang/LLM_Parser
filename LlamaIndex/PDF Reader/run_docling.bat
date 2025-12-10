@@ -27,11 +27,11 @@ python DoclingLoader.py -i "../../PDF/Zero_Width/zero_width.pdf" -o "Output/zero
 
 echo.
 echo [5/12] 正在运行 DoclingLoader...
-python DoclingLoader.py -i "../../PDF/Out_of_Box/oob_poc_base.pdf" -o "Output/out_of_base/base/DoclingLoader.txt"
+python DoclingLoader.py -i "../../PDF/Out_of_Box/oob_poc_base.pdf" -o "Output/out_of_box/base/DoclingLoader.txt"
 
 echo.
 echo [6/12] 正在运行 DoclingLoader...
-python DoclingLoader.py -i "../../PDF/Out_of_Box/oob_poc_cropped.pdf" -o "Output/out_of_base/cropped/DoclingLoader.txt"
+python DoclingLoader.py -i "../../PDF/Out_of_Box/oob_poc_cropped.pdf" -o "Output/out_of_box/cropped/DoclingLoader.txt"
 
 echo.
 echo [7/12] 正在运行 DoclingLoader...
