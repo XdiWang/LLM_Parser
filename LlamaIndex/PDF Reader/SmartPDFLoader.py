@@ -90,6 +90,7 @@ def load_pdf_smart(input_path, output_path, api_url):
         traceback.print_exc()
 
 
+
 if __name__ == "__main__":
     # 初始化参数解析器
     parser = argparse.ArgumentParser(description="SmartPDFLoader 解析工具")
