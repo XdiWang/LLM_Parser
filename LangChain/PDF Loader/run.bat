@@ -25,6 +25,8 @@ if not exist "%OUTPUT_DIR%" (
     md "%OUTPUT_DIR%"
 )
 
+call conda activate LangChain
+
 echo.
 echo ==========================================
 echo 1. 运行 PyPDFLoader (基础解析)
