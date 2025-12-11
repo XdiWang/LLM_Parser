@@ -99,7 +99,8 @@ if __name__ == "__main__":
     parser.add_argument(
         "-i", "--input",
         type=str,
-        default="../text_version.pdf",
+        default="../../PDF/Zero_Width/text/zero_width.pdf",
+        # default="../text_version.pdf",
         help="输入文件的路径 (默认: ../text_version.pdf)"
     )
 
