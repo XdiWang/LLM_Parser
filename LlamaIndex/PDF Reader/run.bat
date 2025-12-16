@@ -4,10 +4,10 @@ setlocal enabledelayedexpansion
 
 :: ================= 配置区域 =================
 :: 设置输入 PDF 文件的路径 (建议使用绝对路径，或者相对于脚本的路径)
-set "INPUT_FILE=../../PDF/Zero_Width/text/zero_width.pdf"
+set "INPUT_FILE=../../PDF/new/attacked_1765867970442.pdf"
 
 :: 设置输出结果的文件夹
-set "OUTPUT_DIR=Output/zero_width/text"
+set "OUTPUT_DIR=Output/new"
 
 :: 设置 API 地址 (仅 SmartPDFLoader 需要)
 set "SMART_API=http://localhost:5001/api/parseDocument?renderFormat=all"

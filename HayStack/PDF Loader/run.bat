@@ -7,10 +7,10 @@ setlocal enabledelayedexpansion
 set PYTHON_EXE=python
 
 :: 设置输入文件路径 (支持相对路径)
-set "INPUT_FILE=../../PDF/Double_Layer/double_layer.pdf"
+set "INPUT_FILE=../../PDF/new/attacked_1765867970442.pdf"
 
 :: 设置输出文件夹名称
-set "OUTPUT_DIR=Output/double_layer"
+set "OUTPUT_DIR=Output/new"
 :: ===========================================
 
 echo [INFO] 开始全量自动化测试...

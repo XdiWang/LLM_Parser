@@ -90,9 +90,7 @@ Further      validation
   missions,      underscoring      significant      security      risks.
 Our      study      sheds  
  
-  light      on      critical      security      challenges      in      Al      platform      ecosystems      and  
- 
-  advocates      for      stronger      security      practices      to      mitigate      these      risks.
+  light      on      critical      security      challenges      in      Al      platform      ecosystems      and       advocates      for      stronger      security      practices      to      mitigate      these      risks.
 
 --------------------
 
