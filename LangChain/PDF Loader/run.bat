@@ -7,13 +7,13 @@ setlocal enabledelayedexpansion
 set PYTHON_EXE=python
 
 :: 设置输入文件路径 (支持相对路径)
-set "INPUT_FILE=../../PDF/Shadow/32953_EGGS_Expert_Guided_Frame.pdf"
+set "INPUT_FILE=../../PDF/TRM3/poc_tr3_marked_content_artifact.pdf"
 
 :: 设置输入目录 (供 PyPDFDirectory 使用)
-set "INPUT_DIR=../../PDF/Shadow"
+set "INPUT_DIR=../../PDF/TRM3"
 
 :: 设置输出文件夹名称
-set "OUTPUT_DIR=Output/shadow"
+set "OUTPUT_DIR=Output/TRM3/marked_content_artifact"
 :: ===========================================
 
 echo [INFO] 开始全量自动化测试...
